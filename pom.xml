@@ -16,7 +16,8 @@
     </properties>
 
     <modules>
-        <module>spring-boot-reactor-v1</module>
+        <module>reactor-v1</module>
+        <module>spring-webflux-v1</module>
     </modules>
 
 </project>
