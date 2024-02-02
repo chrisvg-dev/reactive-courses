@@ -10,7 +10,13 @@
 </head>
 <body>
     <div class="container">
+        <div th:if="${param.error != null}" class="alert alert-danger" role="alert" th:text="${param.error}"></div>
+        <div th:if="${param.error != null}" class="alert alert-success" role="alert" th:text="${param.success}"></div>
+
+
         <h1 th:text="${title}"/>
+
+        <a th:href="@{/save}" class="btn btn-primary">New</a>
 
         <table border="1" class="table">
             <thead>
@@ -18,7 +24,10 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Category</th>
                 <th>Created At</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +35,14 @@
                 <td th:text="${product.id}"></td>
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.price}"></td>
+                <td th:text="${product.category.name}"></td>
                 <td th:text="${product.createdAt}"></td>
+                <td>
+                    <a th:href="@{'/save-record/' + ${product.id}}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{'/delete/' + ${product.id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
